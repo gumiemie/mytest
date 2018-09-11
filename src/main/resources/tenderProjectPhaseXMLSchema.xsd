@@ -1,0 +1,557 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<xs:element name="tenderProjectPhase">
+		<xs:annotation>
+			<xs:documentation>招标项目阶段</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="PROJECT" minOccurs="1" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation>项目编号</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="PROJECT_CODE">
+								<xs:annotation>
+									<xs:documentation>项目编号</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:length value="17"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="PROJECT_NAME">
+								<xs:annotation>
+									<xs:documentation>项目名称</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="1"/>
+										<xs:maxLength value="600"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="INVEST_PROJECT_CODE">
+								<xs:annotation>
+									<xs:documentation>投资项目统一代码</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:pattern value="\w{24}|\w{0}"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="REGION_CODE">
+								<xs:annotation>
+									<xs:documentation>项目所在行政区域代码</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:pattern value="[0-9]{6}"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="INDUSTRIES_TYPE">
+								<xs:annotation>
+									<xs:documentation>项目行业分类</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:length value="3"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="FUND_SOURCE">
+								<xs:annotation>
+									<xs:documentation>资金来源</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="1"/>
+										<xs:maxLength value="1000"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="PROJECT_SCALE">
+								<xs:annotation>
+									<xs:documentation>项目规模</xs:documentation>
+								</xs:annotation>
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:minLength value="1"/>
+										<xs:maxLength value="1000"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="TENDER_PROJECT_CODE">
+					<xs:annotation>
+						<xs:documentation>招标项目编号</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:length value="20"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="TENDER_PROJECT_NAME">
+					<xs:annotation>
+						<xs:documentation>招标项目名称</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1"/>
+							<xs:maxLength value="600"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="TENDER_PROJECT_INDUSTRIES_TYPE">
+					<xs:annotation>
+						<xs:documentation>招标项目行业分类编码</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:length value="3"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="REGION_CODE">
+					<xs:annotation>
+						<xs:documentation>招标项目所在行政区域代码</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:pattern value="[0-9]{6}"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="TENDER_CONTENT">
+					<xs:annotation>
+						<xs:documentation>招标内容与范围</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="TENDERERS" minOccurs="1">
+					<xs:annotation>
+						<xs:documentation>招标人组</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="TENDERER" minOccurs="1" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>招标人</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="TENDER_CODE_TYPE">
+											<xs:annotation>
+												<xs:documentation>招标人代码类型</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="codeType"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="TENDERER_CODE">
+											<xs:annotation>
+												<xs:documentation>招标人代码</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1"/>
+													<xs:maxLength value="18"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="TENDERER_NAME">
+											<xs:annotation>
+												<xs:documentation>招标人名称</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1"/>
+													<xs:maxLength value="200"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="TENDER_AGENCYS" minOccurs="1">
+					<xs:annotation>
+						<xs:documentation>招标代理机构组</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="TENDER_AGENCY" minOccurs="0" maxOccurs="1">
+								<xs:annotation>
+									<xs:documentation>招标代理机构</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="TENDER_AGENCY_CODE_TYPE">
+											<xs:annotation>
+												<xs:documentation>招标代理机构代码类型</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="codeType-or-empty"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="TENDER_AGENCY_CODE">
+											<xs:annotation>
+												<xs:documentation>招标代理机构代码</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="18"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="TENDER_AGENCY_NAME">
+											<xs:annotation>
+												<xs:documentation>招标代理机构名称</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:maxLength value="200"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="TENDER_MODE">
+					<xs:annotation>
+						<xs:documentation>招标方式</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="1"/>
+							<xs:enumeration value="2"/>
+							<xs:enumeration value="9"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="TENDER_ORGANIZE_FORM">
+					<xs:annotation>
+						<xs:documentation>招标组织形式</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="1"/>
+							<xs:enumeration value="2"/>
+							<xs:enumeration value="9"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="CREATE_TIME">
+					<xs:annotation>
+						<xs:documentation>招标项目建立时间</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:pattern value="[0-9]{14}"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="SUPERVISE_DEPT_CODE">
+					<xs:annotation>
+						<xs:documentation>监督部门代码</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="18"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="SUPERVISE_DEPT_NAME">
+					<xs:annotation>
+						<xs:documentation>监督部门名称</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1"/>
+							<xs:maxLength value="200"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="APPROVE_DEPT_CODE">
+					<xs:annotation>
+						<xs:documentation>审核部门代码</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="18"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="APPROVE_DEPT_NAME">
+					<xs:annotation>
+						<xs:documentation>审核部门名称</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:maxLength value="200"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="REPORT_DUTY">
+					<xs:annotation>
+						<xs:documentation>申报责任人</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:minLength value="1"/>
+							<xs:maxLength value="100"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="BID_SECTIONS" minOccurs="1">
+					<xs:annotation>
+						<xs:documentation>相关标段（包）</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="BID_SECTION" minOccurs="1" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>标段（包）</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="BID_SECTION_CODE">
+											<xs:annotation>
+												<xs:documentation>标段（包）编号</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:length value="23"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="BID_SECTION_NAME">
+											<xs:annotation>
+												<xs:documentation>标段（包）名称</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1"/>
+													<xs:maxLength value="500"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="BID_SECTION_CONTENT">
+											<xs:annotation>
+												<xs:documentation>标段（包）内容</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="BID_SECTION_CLASSIFY_CODE">
+											<xs:annotation>
+												<xs:documentation>标段（包）分类代码</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:length value="7"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="CONTRACT_RECKON_PRICE">
+											<xs:annotation>
+												<xs:documentation>标段合同估算价</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="decimal-or-empty"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="CURRENCY_CODE">
+											<xs:annotation>
+												<xs:documentation>标段合同估算价币种代码</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:enumeration value="156"/>
+													<xs:enumeration value="344"/>
+													<xs:enumeration value="392"/>
+													<xs:enumeration value="756"/>
+													<xs:enumeration value="810"/>
+													<xs:enumeration value="826"/>
+													<xs:enumeration value="840"/>
+													<xs:enumeration value="978"/>
+													<xs:enumeration value=""/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="BIDDING_ELIGIBILITY">
+											<xs:annotation>
+												<xs:documentation>投标人资格条件</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="ATTACHMENT_SET" minOccurs="1">
+					<xs:annotation>
+						<xs:documentation>附件集</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ATTACHMENT" minOccurs="0" maxOccurs="unbounded">
+								<xs:annotation>
+									<xs:documentation>附件</xs:documentation>
+								</xs:annotation>
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="ATTACHMENT_CODE">
+											<xs:annotation>
+												<xs:documentation>附件关联标识号</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ATTACHMENT_FILE_NAME">
+											<xs:annotation>
+												<xs:documentation>附件文件名称</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1"/>
+													<xs:maxLength value="100"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="FILE_TYPE">
+											<xs:annotation>
+												<xs:documentation>文件类别</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="fileType-or-empty"/>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="DATA_TIMESTAMP">
+											<xs:annotation>
+												<xs:documentation>附件提交时间戳</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:pattern value="[0-9]{14}"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="MD5">
+											<xs:annotation>
+												<xs:documentation>附件校验码</xs:documentation>
+											</xs:annotation>
+											<xs:simpleType>
+												<xs:restriction base="xs:string">
+													<xs:minLength value="1"/>
+													<xs:maxLength value="36"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="TRADE_PLAT">
+					<xs:annotation>
+						<xs:documentation>交易系统标识码</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:length value="11"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="PUB_SERVICE_PLAT_CODE">
+					<xs:annotation>
+						<xs:documentation>公共服务平台标识码</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:length value="11"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="SUBMIT_TIMESTAMP">
+					<xs:annotation>
+						<xs:documentation>数据时间戳</xs:documentation>
+					</xs:annotation>
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:pattern value="[0-9]{14}"/>
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:simpleType name="codeType-or-empty">
+		<xs:union memberTypes="codeType empty-string"/>
+	</xs:simpleType>
+	<xs:simpleType name="codeType">
+		<xs:restriction base="xs:string">
+			<xs:length value="2"/>
+			<xs:pattern value="(0[1-9]|1\d|2[0-6])|9[5-9]|90"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="fileType-or-empty">
+		<xs:union memberTypes="fileType empty-string"/>
+	</xs:simpleType>
+	<xs:simpleType name="fileType">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="TENDER_PROJECT_FILE"/>
+			<xs:enumeration value="FUND_SOURCE_CERTIFY_FILE"/>
+			<xs:enumeration value="CORPORATION_AUTHORITY_FILE"/>
+			<xs:enumeration value="QUAL_NOTICE_FILE"/>
+			<xs:enumeration value="TENDER_NOTICE_FILE"/>
+			<xs:enumeration value="WIN_CANDIDATE_NOTICE_FILE"/>
+			<xs:enumeration value="WIN_BID_NOTICE_FILE"/>
+			<xs:enumeration value="OTHER_FILE"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="decimal-or-empty">
+		<xs:union memberTypes="limit-decimal empty-string"/>
+	</xs:simpleType>
+	<xs:simpleType name="limit-decimal">
+		<xs:restriction base="xs:decimal">
+			<xs:minInclusive value="0"/>
+			<xs:maxInclusive value="999999999999999999.99"/>
+			<xs:fractionDigits value="2"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="empty-string">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value=""/>
+		</xs:restriction>
+	</xs:simpleType>
+</xs:schema>

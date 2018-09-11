@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!-- 公告信息 -->
+<div class="view-box clearfix">
+    <div class="view-left fl">
+        <h2 class="view-title">${docTitle}</h2>
+        <ul class="view-info-head mg-t20">
+            <li class="clearfix">
+                <span class="title">采购类型：</span>
+                <span class="con">${procurementType}</span>
+            </li>
+            <li class="clearfix">
+                <span class="title">公告类型：</span>
+                <span class="con">${infoclass}</span>
+            </li>
+            <li class="clearfix bidCode">
+                <span class="title">项目编号：</span>
+                <span class="con">${bidCode}</span>
+            </li>
+            <li class="clearfix pubDate">
+                <span class="title">发布时间：</span>
+                <span class="con">${pubDate}</span>
+            </li>
+            <%if(bidBookEndTime!=null){%>
+            <li class="clearfix bidBookEndTime">
+                <span class="title">领购截止：</span>
+                <span class="con">${bidBookEndTime}</span>
+            </li>
+            <%}%>
+            <%if(endDate!=null){%>
+            <li class="clearfix endDate">
+                <span class="title">投标/递交截止：</span>
+                <span class="con">${endDate}</span>
+            </li>
+            <%}%>
+            <%if(noticeEndTime!=null){%>
+            <li class="clearfix noticeEndTime">
+                <span class="title">结束时间：</span>
+                <span class="con">${noticeEndTime}</span>
+            </li>
+            <%}%>
+            <%if(tenderer!=null){%>
+            <li class="clearfix">
+                <span class="title">采购人：</span>
+                <span class="con">${tenderer}</span>
+            </li>
+            <%}%>
+            <%if(provName!=null){%>
+            <li class="clearfix">
+                <span class="title">项目所在地：</span>
+                <span class="con">${provName}</span>
+            </li>
+            <%}%>
+            <%if(projType!=null){%>
+            <li class="clearfix">
+                <span class="title">项目类别：</span>
+                <span class="con">${projType}</span>
+            </li>
+            <%}%>
+            <%if(projNature!=null){%>
+            <li class="clearfix">
+                <span class="title">项目性质：</span>
+                <span class="con">${projNature}</span>
+            </li>
+            <%}%>
+            <%if(fundSource!=null){%>
+            <li class="clearfix">
+                <span class="title">资金来源：</span>
+                <span class="con">${fundSource}</span>
+            </li>
+            <%}%>
+        </ul>
+        <div class="pd-l20 pd-r20">
+            <h3 class="view-conTitle pd-t35 pd-b5">公告内容</h3>
+            <div class="view-content">
+                ${noticeContent.content}
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

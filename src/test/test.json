@@ -1,0 +1,341 @@
+{
+  "displayStyle": "formItem",
+  "styleType": "customFormItem",
+  "typeData": {
+    "0": {
+      "key": "name",
+      "id": 3,
+      "title": "合同名称",
+      "customClass": {
+        "isRequired": "true",
+        "isPublic": "true",
+        "isOperation": true
+      },
+      "formItemClass": {
+        "formItemType": "Input",
+        "itemTypeSpecies": "text",
+        "itemTypeClass": {
+          "width": "200",
+          "height": "",
+          "placeholder": "选择或输入"
+        },
+        "paramCheck": {
+          "maxLength": 400,
+          "quotationPrecision": 2,
+          "isRequired": true,
+          "disabled": false
+        }
+      }
+    },
+    "1": {
+      "key": "headNameB",
+      "id": 2,
+      "title": "乙方名称",
+      "customClass": {
+        "isRequired": "true",
+        "isPublic": "true",
+        "isOperation": true
+      },
+      "formItemClass": {
+        "formItemType": "Input",
+        "itemTypeSpecies": "text",
+        "itemTypeClass": {
+          "width": "200",
+          "height": "",
+          "placeholder": "选择或输入",
+          "buttonName": "选择供应商"
+        },
+        "paramCheck": {
+          "maxLength": 120,
+          "quotationPrecision": 2,
+          "isRequired": true,
+          "disabled": false
+        }
+      }
+    },
+    "2": {
+      "key": "headNameA",
+      "id": 1,
+      "title": "甲方名称",
+      "customClass": {
+        "isRequired": "true",
+        "isPublic": "true",
+        "isOperation": true
+      },
+      "formItemClass": {
+        "formItemType": "Input",
+        "itemTypeSpecies": "text",
+        "itemTypeClass": {
+          "width": "200",
+          "height": "",
+          "placeholder": "选择或输入",
+          "buttonName": "选择甲方信息"
+        },
+        "paramCheck": {
+          "maxLength": 120,
+          "quotationPrecision": 2,
+          "isRequired": true,
+          "disabled": false
+        }
+      }
+    },
+    "3": {
+      "key": "code",
+      "id": 4,
+      "title": "合同编号",
+      "customClass": {
+        "isRequired": "true",
+        "isPublic": "true",
+        "isOperation": true
+      },
+      "formItemClass": {
+        "formItemType": "Input",
+        "itemTypeSpecies": "text",
+        "itemTypeClass": {
+          "width": "200",
+          "height": "",
+          "placeholder": "选择或输入"
+        },
+        "paramCheck": {
+          "maxLength": 120,
+          "quotationPrecision": 2,
+          "isRequired": true,
+          "disabled": false
+        }
+      }
+    },
+    "4": {
+      "key": "typeId",
+      "id": 8,
+      "title": "合同分类",
+      "customClass": {
+        "isRequired": "true",
+        "isPublic": "true",
+        "isOperation": false
+      },
+      "formItemClass": {
+        "formItemType": "Select",
+        "itemTypeSpecies": "simpleSelect",
+        "itemTypeClass": {
+          "width": "200",
+          "height": "",
+          "placeholder": "选择或输入"
+        },
+        "itemTypeDataUrl": "http://supplier.bidlink.cn/contract/typeDefault/listType/anonymous?companyId={0}",
+        "paramCheck": {
+          "maxLength": 200,
+          "quotationPrecision": 2,
+          "isRequired": true,
+          "disabled": false
+        },
+        "itemTypeDatas": [
+          {
+            "name": "sdfsdf",
+            "id": "51",
+            "value": "s234"
+          },
+          {
+            "name": "4",
+            "id": "24",
+            "value": "4"
+          },
+          {
+            "name": "买票去",
+            "id": "20",
+            "value": "222222"
+          },
+          {
+            "name": "非标准合同12123123",
+            "id": "7",
+            "value": "FBZHT"
+          },
+          {
+            "name": "标准合同",
+            "id": "6",
+            "value": "BZHT"
+          }
+        ]
+      }
+    },
+    "5": {
+      "key": "isNeedSupplierConfirm",
+      "id": 9,
+      "title": "供应商确认",
+      "customClass": {
+        "isRequired": "true",
+        "isPublic": "true",
+        "isOperation": false
+      },
+      "formItemClass": {
+        "formItemType": "Radio",
+        "itemTypeSpecies": "RadioGroup",
+        "itemTypeClass": {
+          "width": "200",
+          "height": "",
+          "placeholder": "选择或输入"
+        },
+        "itemTypeDatas": [
+          {
+            "value": 1,
+            "name": "需确认"
+          },
+          {
+            "value": 0,
+            "name": "不需确认"
+          }
+        ],
+        "paramCheck": {
+          "maxLength": 200,
+          "quotationPrecision": 2,
+          "isRequired": true,
+          "disabled": false
+        }
+      }
+    },
+    "6": {
+      "key": "projectTypeId",
+      "id": 10,
+      "title": "项目类型",
+      "customClass": {
+        "isRequired": "true",
+        "isPublic": "true",
+        "isOperation": false
+      },
+      "formItemClass": {
+        "formItemType": "Select",
+        "itemTypeSpecies": "simpleSelect",
+        "itemTypeClass": {
+          "width": "200",
+          "height": "",
+          "placeholder": "选择或输入"
+        },
+        "itemTypeDataUrl": "http://supplier.bidlink.cn/contract/typeProject/list/anonymous?companyId={0}",
+        "paramCheck": {
+          "maxLength": 200,
+          "quotationPrecision": 2,
+          "isRequired": true,
+          "disabled": false
+        },
+        "itemTypeDatas": [
+          {
+            "name": "6",
+            "id": "140829451083579392",
+            "value": "6"
+          },
+          {
+            "name": "你好 123 asd !@#",
+            "id": "140827885135986688",
+            "value": "你好 123 asd !@#"
+          },
+          {
+            "name": "!@#",
+            "id": "140827170414002176",
+            "value": "!@#"
+          },
+          {
+            "name": "asd",
+            "id": "140827101321232384",
+            "value": "asd"
+          },
+          {
+            "name": "你好",
+            "id": "140826994760744960",
+            "value": "你好"
+          },
+          {
+            "name": "1",
+            "id": "140826969125158912",
+            "value": "1"
+          }
+        ]
+      }
+    },
+    "7": {
+      "key": "isFramework",
+      "id": 11,
+      "title": "框架协议",
+      "customClass": {
+        "isRequired": "true",
+        "isPublic": "true",
+        "isOperation": false
+      },
+      "formItemClass": {
+        "formItemType": "Radio",
+        "itemTypeSpecies": "RadioGroup",
+        "itemTypeClass": {
+          "width": "200",
+          "height": "",
+          "placeholder": "选择或输入"
+        },
+        "itemTypeDatas": [
+          {
+            "value": 1,
+            "name": "是"
+          },
+          {
+            "value": 0,
+            "name": "否"
+          }
+        ],
+        "paramCheck": {
+          "maxLength": 200,
+          "quotationPrecision": 2,
+          "isRequired": true,
+          "disabled": false
+        }
+      }
+    },
+    "8": {
+      "key": "useDepartmentId",
+      "id": 12,
+      "title": "使用部门",
+      "customClass": {
+        "isRequired": "true",
+        "isPublic": "true",
+        "isOperation": false
+      },
+      "formItemClass": {
+        "formItemType": "Input",
+        "itemTypeSpecies": "text",
+        "itemTypeClass": {
+          "width": "200",
+          "height": "",
+          "placeholder": "请选择使用部门",
+          "buttonName": "选择使用部门"
+        },
+        "itemTypeDataUrl": "",
+        "paramCheck": {
+          "maxLength": 200,
+          "quotationPrecision": 2,
+          "isRequired": true,
+          "disabled": false
+        }
+      }
+    },
+    "9": {
+      "key": "effectiveStartAndEnd",
+      "id": 13,
+      "title": "有效期限",
+      "customClass": {
+        "isRequired": "true",
+        "isPublic": "true",
+        "isOperation": false
+      },
+      "formItemClass": {
+        "formItemType": "DatePicker",
+        "itemTypeSpecies": "daterange",
+        "itemTypeClass": {
+          "width": "200",
+          "height": "",
+          "placeholder": "选择或输入"
+        },
+        "paramCheck": {
+          "maxLength": 200,
+          "quotationPrecision": 2,
+          "isRequired": true,
+          "disabled": false
+        }
+      }
+    }
+  }
+}
