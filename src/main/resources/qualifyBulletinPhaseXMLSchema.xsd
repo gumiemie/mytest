@@ -226,7 +226,7 @@
 						<xs:restriction base="xs:string"/>
 					</xs:simpleType>
 				</xs:element>
-				<xs:element name="QUAL_TYPE">
+				<xs:element name="qualType">
 					<xs:annotation>
 						<xs:documentation>评审办法</xs:documentation>
 					</xs:annotation>

@@ -24,7 +24,7 @@ public class ProcessHistoryData {
     @Test
     public void execute2() {
         //根据committee数据初始化packageTeam以及packageTeamMember的数据
-        List<Record> committees = testBiddingDao.query("committee", Cnd.where("source", "=", "1"));
+        List<Record> committees = testBiddingDao.query("cn/bidlink/nbl/committee", Cnd.where("source", "=", "1"));
         for (Record committee : committees) {
             String packageId = committee.getString("package_id");
             String type = committee.getString("type");
@@ -145,10 +145,10 @@ public class ProcessHistoryData {
                 params.setPackageGroupId(packageGroupId);
                 List<Record> records = null;
                 if (StringUtils.isNotBlank(packageId)) {
-                    records = testBiddingDao.query("committee", Cnd.where("package_id", "=", packageId).and("type", "=", "012"));
+                    records = testBiddingDao.query("cn/bidlink/nbl/committee", Cnd.where("package_id", "=", packageId).and("type", "=", "012"));
                 } else {
                     if (StringUtils.isNotBlank(packageGroupId)) {
-                        records = testBiddingDao.query("committee", Cnd.where("package_group_id", "=", packageGroupId).and("type", "=", "012"));
+                        records = testBiddingDao.query("cn/bidlink/nbl/committee", Cnd.where("package_group_id", "=", packageGroupId).and("type", "=", "012"));
                     }
                 }
                 if (records != null && records.size() > 0) {

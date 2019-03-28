@@ -1,3 +1,4 @@
+/*
 package itextpdf;
 
 import com.alibaba.fastjson.JSON;
@@ -73,16 +74,21 @@ public class ExportPdfTest {
 //        canvas.lineTo(document.right(), document.top() - 4);
 //        canvas.closePathStroke();
 
-        /*//标题
+        */
+/*//*
+/标题
         Font h1 = new Font(baseFont, 13.5f, Font.BOLD);//创建全文标题字体，参数分别是字体类别,大小(pt),效果
         Paragraph paragraphTitle = new Paragraph("标题测试", h1);//设置文本内容和要使用的字体
         paragraphTitle.setAlignment(Element.ALIGN_CENTER);//设置居中
-        document.add(paragraphTitle);*/
+        document.add(paragraphTitle);*//*
+
 
         //正文标题1
-        /*Font h3 = new Font(baseFont, 14, Font.BOLD);//创建标题字体
+        */
+/*Font h3 = new Font(baseFont, 14, Font.BOLD);//创建标题字体
         Paragraph paragraphH1 = new Paragraph("正文标题1", h3);
-        document.add(paragraphH1);*/
+        document.add(paragraphH1);*//*
+
 
         //正文1 一个空白行
         Paragraph paragraphText1 = new Paragraph(" ", font12);
@@ -435,11 +441,13 @@ public class ExportPdfTest {
                 "\t&nbsp;\n" +
                 "</p>";
         //正文2内容是html,需要将html转换成普通文字,方法如下:
-        /*org.jsoup.nodes.Document contentDoc = Jsoup.parseBodyFragment(content);
+        */
+/*org.jsoup.nodes.Document contentDoc = Jsoup.parseBodyFragment(content);
         org.jsoup.nodes.Document.OutputSettings outputSettings = new org.jsoup.nodes.Document.OutputSettings();
         outputSettings.syntax(org.jsoup.nodes.Document.OutputSettings.Syntax.xml);
         contentDoc.outputSettings(outputSettings);
-        String parsedHtml = contentDoc.outerHtml();*/
+        String parsedHtml = contentDoc.outerHtml();*//*
+
 
         StringBuilder stringBuilder = new StringBuilder("");
         stringBuilder.append("<html><body>").append(content).append("</body></html>");
@@ -450,12 +458,14 @@ public class ExportPdfTest {
 
 
         //页脚
-        /*PdfContentByte cj = writer.getDirectContent();
+        */
+/*PdfContentByte cj = writer.getDirectContent();
         Phrase leftp3 = new Phrase("页脚左侧", font12);
         ColumnText.showTextAligned(cj, Element.ALIGN_LEFT, leftp3, document.left(), document.bottom(), 0);
         Phrase rightp3 = new Phrase("页脚右侧", font12);
         final float rightp3WidthPoint = baseFont.getWidthPoint(rightp3.getContent(), 12);
-        ColumnText.showTextAligned(cj, Element.ALIGN_LEFT, rightp3, document.right() - rightp3WidthPoint, document.bottom(), 0)*/;
+        ColumnText.showTextAligned(cj, Element.ALIGN_LEFT, rightp3, document.right() - rightp3WidthPoint, document.bottom(), 0)*//*
+;
         String path=drawCircularSeal("D:/","宋体","公告签章","必联北京电子商务科技有限公司公司",null,"华文行楷","宋明轩");
         Image img = Image.getInstance(path);
         float plainHeight = img.getPlainHeight();
@@ -471,6 +481,7 @@ public class ExportPdfTest {
         //outputStream.write(bytes);
 
     }
+*/
 /*
     public void read(File file) throws Exception {
         PdfReader pdfReader = new FdfReader(file.getPath(), "PDF".getBytes());
@@ -483,7 +494,8 @@ public class ExportPdfTest {
     public void execute1() throws Exception {
         File file = new File("C:\\Users\\Administrator\\Desktop\\test.pdf");
         read(file);
-    }*/
+    }*//*
+
 
 
     @Test
@@ -552,3 +564,4 @@ public class ExportPdfTest {
             "</body>\n" +
             "</html>";
 }
+*/

@@ -1,3 +1,4 @@
+/*
 package itextpdf;
 
 import com.itextpdf.text.Document;
@@ -57,3 +58,4 @@ public class WaterMark1 extends PdfPageEventHelper {
 
     }
 }
+*/

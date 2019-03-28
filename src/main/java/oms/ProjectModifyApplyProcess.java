@@ -13,6 +13,7 @@ import org.nutz.dao.Chain;
 import org.nutz.dao.Cnd;
 import org.nutz.dao.entity.Record;
 import org.nutz.dao.impl.NutDao;
+import org.nutz.dao.pager.Pager;
 import utils.DBUtils;
 
 import java.io.File;
@@ -27,9 +28,12 @@ import java.util.List;
  * @date 2018/4/27 15:09$
  */
 public class ProjectModifyApplyProcess {
-    NutDao oldTestOmsDao = new DBUtils().getOldOmsDao();
-    NutDao newTestOmsDao = new DBUtils().getNewOmsDao();
-    NutDao testCenterDao = new DBUtils().getCenterDao();
+    NutDao oldTestOmsDao = new DBUtils().getOldTestOmsDao();
+    NutDao newTestOmsDao = new DBUtils().getNewTestOmsDao();
+    NutDao testCenterDao = new DBUtils().getTestCenterDao();
+
+    NutDao omsDao = new DBUtils().getNewOmsDao();
+
 
     @Test
     public void execute() {
@@ -127,7 +131,7 @@ public class ProjectModifyApplyProcess {
         for (int rowNum = 1; rowNum <= sheet.getLastRowNum(); rowNum++) {
             Row row = sheet.getRow(rowNum);
             long applyId = (long) (row.getCell(0).getNumericCellValue());
-            long projectId = (long)(row.getCell(1).getNumericCellValue());
+            long projectId = (long) (row.getCell(1).getNumericCellValue());
             List<NewApply> newApplies = newTestOmsDao.query(NewApply.class, Cnd.where("project_id", "=", projectId));
             if (newApplies != null && newApplies.size() > 0) {
                 if (newApplies.size() == 1) {
@@ -149,18 +153,33 @@ public class ProjectModifyApplyProcess {
                         //如果库里的时间与文件中时间一致,则可以对应
                         if (equalsTime.equals(applyDate)) {
                             Long omsId = newApply.getId();
-                            newTestOmsDao.update(NewApply.class, Chain.make("id", applyId), Cnd.where("project_id", "=", projectId).and("apply_time","=",applyTime));
+                            newTestOmsDao.update(NewApply.class, Chain.make("id", applyId), Cnd.where("project_id", "=", projectId).and("apply_time", "=", applyTime));
                             List<NewRecord> newRecords = newTestOmsDao.query(NewRecord.class, Cnd.where("apply_id", "=", omsId));
                             for (NewRecord newRecord : newRecords) {
                                 newTestOmsDao.update(NewRecord.class, Chain.make("apply_id", applyId), Cnd.where("id", "=", newRecord.getId()));
                             }
-                           break;
+                            break;
                         }
                     }
                 }
             }
         }
 
+    }
+
+    @Test
+    public void execute2() {
+        List<Record> records = omsDao.query("project_modify_apply", Cnd.where("status", "=", 7));
+        Pager pager = new Pager();
+        pager.setPageSize(1);
+        pager.setPageNumber(1);
+        for (Record record : records) {
+            String id = record.getString("id");
+            List<Record> recordList = omsDao.query("project_regulatory_record", Cnd.where("apply_id", "=", id).orderBy("opt_time", "desc"), pager);
+            if (recordList != null && recordList.size() > 0) {
+                omsDao.update("project_modify_apply", Chain.make("finish_time", recordList.get(0).getString("opt_time")), Cnd.where("id", "=", id));
+            }
+        }
     }
 
 

@@ -1,20 +1,17 @@
-import org.apache.solr.client.solrj.SolrQuery;
-import org.apache.solr.client.solrj.impl.LBHttpSolrClient;
-import org.apache.solr.client.solrj.impl.XMLResponseParser;
-import org.apache.solr.client.solrj.response.QueryResponse;
-import org.apache.solr.common.SolrDocument;
-import org.apache.solr.common.SolrDocumentList;
+import com.alibaba.fastjson.JSONObject;
 import org.junit.Test;
+import org.nutz.dao.Cnd;
 import org.nutz.dao.impl.NutDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pubService.project.SuperviseSendLog;
 import utils.DBUtils;
 
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -26,11 +23,11 @@ import java.util.regex.Pattern;
 public class AreaTest {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
+    DBUtils dbUtils = new DBUtils();
 
     @Test
     public void processBidOrderStatus() {
 
-        DBUtils dbUtils = new DBUtils();
         NutDao testBiddingDao = dbUtils.getTestBiddingDao();
 
 
@@ -38,7 +35,17 @@ public class AreaTest {
 
     @Test
     public void execute1() {
+        NutDao oaDao = dbUtils.getOaDao();
+
+        String noticeId = "7b90b938fae1468db10ffbdb8532af3f";
+        Integer type = 4;
+        List<SuperviseSendLog> logs = oaDao.query(SuperviseSendLog.class, Cnd.where("notice_id", "=", noticeId).and("type", "=", type));
         String content = "";
+        if (logs != null && logs.size() != 0) {
+            String data = logs.get(0).getData();
+            HashMap hashMap = JSONObject.parseObject(data, HashMap.class);
+            content = hashMap.get("bulletinContent").toString();
+        }
         content = content.replaceAll("&", "&amp;");
         content = content.replaceAll("<", "&lt;");
         content = content.replaceAll(">", "&gt;");
@@ -58,9 +65,42 @@ public class AreaTest {
 
     @Test
     public void execute() throws Exception {
-        for (int i = 0; i < 300; i++) {
-            System.out.println(generateRandom(20));
+        String number = "20190221001";
+        String projectNumber = "";//项目编号
+        String tenderNumber = "";//招标项目编号
+        String packageNumber = "";//包子编号/后的编号;
+
+        int lastIndex = number.lastIndexOf("/");
+        if (lastIndex > -1) {
+            projectNumber = number.substring(0, lastIndex);
+            packageNumber = number.substring(lastIndex + 1);
+            StringBuilder stringBuilder = new StringBuilder(projectNumber);
+            int lengthFirst = stringBuilder.length();
+            int lengthSecond = packageNumber.length();
+            while (lengthFirst + lengthSecond != 23) {
+                stringBuilder.append("0");
+                lengthFirst++;
+            }
+            stringBuilder.append(packageNumber);
+            projectNumber = projectNumber.length() > 17 ? projectNumber.substring(projectNumber.length() - 17) : stringBuilder.substring(0, 17);
+            tenderNumber = stringBuilder.substring(0, 20);
+            packageNumber = stringBuilder.substring(20);
+        }else {
+            projectNumber = number;
+            packageNumber = "000";
+            //项目编号长度
+            int length = projectNumber.length();
+            if (length >= 17) {
+                projectNumber = projectNumber.substring(length - 17);
+                tenderNumber = String.format("%-20s", projectNumber).replaceAll(" ", "0");
+            } else {
+                projectNumber = String.format("%-17s", projectNumber).replaceAll(" ", "0");
+                tenderNumber = String.format("%-20s", projectNumber).replaceAll(" ", "0");
+            }
         }
+        System.out.println(projectNumber);
+        System.out.println(tenderNumber);
+        System.out.println(packageNumber);
     }
 
     /**
@@ -79,9 +119,8 @@ public class AreaTest {
     }
 
 
-    @Test
     public void execute2() throws Exception {
-        String solrServceUrl1 = "http://211.151.208.171:8800/solr/searchbu/";
+        /*String solrServceUrl1 = "http://211.151.208.171:8800/solr/searchbu/";
         String solrServceUrl2 = "http://211.151.208.173:8800/solr/searchbu/";
 
         LBHttpSolrClient solrClient = new LBHttpSolrClient.Builder().withBaseSolrUrls(solrServceUrl1, solrServceUrl2).build();
@@ -103,7 +142,7 @@ public class AreaTest {
         SolrDocumentList results = response.getResults();
         SolrDocument solrDocument = results.get(0);
         HashMap<String, Object> stringObjectHashMap = new HashMap<String, Object>();
-        Map<String, Map<String, List<String>>> highlighting = response.getHighlighting();
+        Map<String, Map<String, List<String>>> highlighting = response.getHighlighting();*/
     }
 
     /*private List<ItemSolr> queryItemSolrByKeyword(String keywords, Integer page, Integer rows)
@@ -155,6 +194,12 @@ public class AreaTest {
         }
 
         return list;*/
+
+    @Test
+    public void execute3() throws Exception{
+        String weight;
+        System.out.print(UUID.randomUUID().toString().replaceAll("-",""));
+    }
 
 }
 

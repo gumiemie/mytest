@@ -1,3 +1,4 @@
+/*
 package itextpdf;
 
 import com.alibaba.fastjson.JSON;
@@ -103,7 +104,8 @@ public class ExportPdfTest1 {
 
     }
 
-  /*  public void read(File file)throws Exception{
+  */
+/*  public void read(File file)throws Exception{
         PdfReader pdfReader = new FdfReader(file.getPath(),"PDF".getBytes());
         FileOutputStream outputStream = new FileOutputStream(new File("C:\\Users\\Administrator\\Desktop\\testpdf.pdf"));
         PdfStamper stamp = new PdfStamper(pdfReader, outputStream);
@@ -114,7 +116,8 @@ public class ExportPdfTest1 {
     public void execute1()throws Exception{
         File file = new File("C:\\Users\\Administrator\\Desktop\\test.pdf");
         read(file);
-    }*/
+    }*//*
+
 
 
 
@@ -184,3 +187,4 @@ public class ExportPdfTest1 {
             "</body>\n" +
             "</html>";
 }
+*/

@@ -164,7 +164,7 @@
 						</xs:restriction>
 					</xs:simpleType>
 				</xs:element>
-				<xs:element name="BID_DOC_REFER_METHOD">
+				<xs:element name="bidDocReferMethod">
 					<xs:annotation>
 						<xs:documentation>投标文件递交方法</xs:documentation>
 					</xs:annotation>
@@ -185,7 +185,7 @@
 						</xs:restriction>
 					</xs:simpleType>
 				</xs:element>
-				<xs:element name="SYNDICATED_FLAG">
+				<xs:element name="syndicatedFlag">
 					<xs:annotation>
 						<xs:documentation>是否允许联合体投标</xs:documentation>
 					</xs:annotation>
@@ -218,7 +218,7 @@
 						</xs:restriction>
 					</xs:simpleType>
 				</xs:element>
-				<xs:element name="BID_OPEN_METHOD">
+				<xs:element name="bidOpenMethod">
 					<xs:annotation>
 						<xs:documentation>开标方式</xs:documentation>
 					</xs:annotation>
