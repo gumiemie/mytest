@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: cn.bidlink.cms:send-to-cms-core:0.0.4-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/java/maven2/repository/cn/bidlink/cms/send-to-cms-core/0.0.4-SNAPSHOT/send-to-cms-core-0.0.4-20181126.030655-33.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/java/maven2/repository/cn/bidlink/cms/send-to-cms-core/0.0.4-SNAPSHOT/send-to-cms-core-0.0.4-20181126.030655-33-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/java/maven2/repository/cn/bidlink/cms/send-to-cms-core/0.0.4-SNAPSHOT/send-to-cms-core-0.0.4-20181126.030655-33-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

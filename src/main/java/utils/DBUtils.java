@@ -31,6 +31,7 @@ public class DBUtils {
     private NutDao centerDao;//中心库正式
     private NutDao nblUserDao;//正式nblUser库
     private NutDao nblUserTestDao;//测试nblUser
+    private NutDao nblDataStoreDao;//数据仓库中心库
 
 
     public NutDao getCnDao() {
@@ -302,4 +303,17 @@ public class DBUtils {
         this.nblUserTestDao = nblUserTestDao;
     }
 
+    public NutDao getNblDataStoreDao() {
+        DruidDataSource dataStoreDataSource = new DruidDataSource();
+        dataStoreDataSource.setUrl("jdbc:mysql://10.0.0.31:3306/unireg?useUnicode=true");
+        dataStoreDataSource.setUsername("canal");
+        dataStoreDataSource.setPassword("canal@2019");
+        nblUserDao = new NutDao(dataStoreDataSource);
+        return nblDataStoreDao;
+    }
+
+    public void setNblDataStoreDao(NutDao nblDataStoreDao) {
+        this.nblDataStoreDao = nblDataStoreDao;
+    }
 }
+

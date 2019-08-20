@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: cn.bidlink.openapi:oauth2-core:0.0.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/java/maven2/repository/cn/bidlink/openapi/oauth2-core/0.0.1-SNAPSHOT/oauth2-core-0.0.1-20130828.032837-9.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/java/maven2/repository/cn/bidlink/openapi/oauth2-core/0.0.1-SNAPSHOT/oauth2-core-0.0.1-20130828.032837-9-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/java/maven2/repository/cn/bidlink/openapi/oauth2-core/0.0.1-SNAPSHOT/oauth2-core-0.0.1-20130828.032837-9-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

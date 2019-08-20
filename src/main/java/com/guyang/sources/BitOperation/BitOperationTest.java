@@ -6,14 +6,16 @@ import org.junit.Test;
  * @author 顾洋 <guyang@ebnew.com>
  * @description 位运算
  * 原码,反码,补码.计算机中的运算使用的都是补码，正数的补码是他自己，负数的补码是反码+1，就是符号位不变，其它位取反再加1
- *
  * @date 2018/3/20 16:56$
  */
 public class BitOperationTest {
     int a = 3;
     int b = -4;
+    byte c = -13;
+    byte d = 14;
+
     @Test
-    public void test(){
+    public void test() {
         /**
          * b的原码: 10000000 00000000 00000000 00000100
          * b的反码: 11111111 11111111 11111111 11111011
@@ -36,8 +38,8 @@ public class BitOperationTest {
          * 右移,去掉右侧值,左侧补0:000 00000000 00000000 00000000 00000
          * 左移,去掉左侧值,右侧补0:00000 00000000 00000000 00000011 000
          */
-        System.out.println(a>>3);
-        System.out.println(a<<3);
+        System.out.println(a >> 3);
+        System.out.println(a << 3);
 
         /**
          * b的原码: 10000000 00000000 00000000 00000100
@@ -52,8 +54,8 @@ public class BitOperationTest {
          * 获取反码: 10000 00000000 00000000 00000100 000
          * 结果是-32
          */
-        System.out.println(b>>3);
-        System.out.println(b<<3);
+        System.out.println(b >> 3);
+        System.out.println(b << 3);
 
 
         /**
@@ -65,8 +67,29 @@ public class BitOperationTest {
          * 无符合右移: 000 11111111 11111111 11111111 11111
          * 反码原码不变:结果是536870911
          */
-        System.out.println(a>>>3);
-        System.out.println(b>>>3);
+        System.out.println(a >>> 3);
+        System.out.println(b >>> 3);
+    }
+
+    @Test
+    public void execute() {
+        ClassLoader classLoader = this.getClass().getClassLoader();
+        System.out.println(classLoader);
+        ClassLoader parent = classLoader.getParent();
+        System.out.println(parent);
+        ClassLoader parent1 = parent.getParent();
+        System.out.println(parent1);
+
+        try {
+            classLoader.loadClass("com.guyang.sources.jvm.utils.U1");
+            System.out.println("-----------------------------------");
+            //Class.forName("com.guyang.sources.jvm.utils.U1");
+            System.out.println("-----------------------------------");
+            Class.forName("com.guyang.sources.jvm.utils.U1",true,classLoader);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
 }

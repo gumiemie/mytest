@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: cn.bidlink.openapi.client:bid-openapi-client:0.0.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/java/maven2/repository/cn/bidlink/openapi/client/bid-openapi-client/0.0.1-SNAPSHOT/bid-openapi-client-0.0.1-20131218.072641-27.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/java/maven2/repository/cn/bidlink/openapi/client/bid-openapi-client/0.0.1-SNAPSHOT/bid-openapi-client-0.0.1-20131218.072641-27-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/java/maven2/repository/cn/bidlink/openapi/client/bid-openapi-client/0.0.1-SNAPSHOT/bid-openapi-client-0.0.1-20131218.072641-27-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

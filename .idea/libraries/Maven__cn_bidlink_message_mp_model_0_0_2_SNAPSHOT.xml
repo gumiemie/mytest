@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: cn.bidlink.message:mp-model:0.0.2-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/java/maven2/repository/cn/bidlink/message/mp-model/0.0.2-SNAPSHOT/mp-model-0.0.2-20141127.031747-2.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/java/maven2/repository/cn/bidlink/message/mp-model/0.0.2-SNAPSHOT/mp-model-0.0.2-20141127.031747-2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/java/maven2/repository/cn/bidlink/message/mp-model/0.0.2-SNAPSHOT/mp-model-0.0.2-20141127.031747-2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

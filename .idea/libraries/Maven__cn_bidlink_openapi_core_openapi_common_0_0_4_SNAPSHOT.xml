@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: cn.bidlink.openapi:core-openapi-common:0.0.4-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/java/maven2/repository/cn/bidlink/openapi/core-openapi-common/0.0.4-SNAPSHOT/core-openapi-common-0.0.4-20150818.075543-5.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/java/maven2/repository/cn/bidlink/openapi/core-openapi-common/0.0.4-SNAPSHOT/core-openapi-common-0.0.4-20150818.075543-5-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/java/maven2/repository/cn/bidlink/openapi/core-openapi-common/0.0.4-SNAPSHOT/core-openapi-common-0.0.4-20150818.075543-5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

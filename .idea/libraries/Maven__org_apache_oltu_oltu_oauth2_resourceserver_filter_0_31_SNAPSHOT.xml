@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.apache.oltu:oltu-oauth2-resourceserver-filter:0.31-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/java/maven2/repository/org/apache/oltu/oltu-oauth2-resourceserver-filter/0.31-SNAPSHOT/oltu-oauth2-resourceserver-filter-0.31-20130820.015735-3.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/java/maven2/repository/org/apache/oltu/oltu-oauth2-resourceserver-filter/0.31-SNAPSHOT/oltu-oauth2-resourceserver-filter-0.31-20130820.015735-3-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/java/maven2/repository/org/apache/oltu/oltu-oauth2-resourceserver-filter/0.31-SNAPSHOT/oltu-oauth2-resourceserver-filter-0.31-20130820.015735-3-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

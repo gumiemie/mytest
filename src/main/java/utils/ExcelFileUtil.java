@@ -7,13 +7,11 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.OutputStream;
+import java.io.*;
 import java.lang.reflect.Method;
 import java.net.URLEncoder;
 import java.text.SimpleDateFormat;
@@ -305,5 +303,39 @@ public class ExcelFileUtil {
         return fileName;
     }
 
+
+    private static Sheet readExcelFile(String filePath, Integer sheetIndex, String sheetName) throws Exception {
+
+        File file = new File(filePath);
+        FileInputStream fileInputStream = new FileInputStream(file);
+
+        Workbook workbook;
+        if (filePath.contains(".xls")) {
+            workbook = new HSSFWorkbook(fileInputStream);
+        } else if (filePath.contains(".xlsx")) {
+            workbook = new XSSFWorkbook(fileInputStream);
+        } else {
+            throw new Exception("文件路径参数非法");
+        }
+
+        if (sheetIndex!=null&&sheetIndex>-1){
+            return workbook.getSheetAt(sheetIndex);
+        }
+
+        if (StringUtils.isNotBlank(sheetName)){
+            return workbook.getSheet(sheetName);
+        }
+
+        return null;
+
+    }
+
+    public static Sheet getSheetByIndex(String filePath,Integer sheetIndex) throws Exception{
+        return readExcelFile(filePath,sheetIndex,null);
+    }
+
+    public static Sheet getSheetByName(String filePath,String sheetName) throws Exception{
+        return readExcelFile(filePath,null,sheetName);
+    }
 
 }

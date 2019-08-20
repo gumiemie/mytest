@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: cn.bidlink.framework:framework-pmp:2012.03.44-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/java/maven2/repository/cn/bidlink/framework/framework-pmp/2012.03.44-SNAPSHOT/framework-pmp-2012.03.44-20131121.062437-11.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/java/maven2/repository/cn/bidlink/framework/framework-pmp/2012.03.44-SNAPSHOT/framework-pmp-2012.03.44-20131121.062437-11-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/java/maven2/repository/cn/bidlink/framework/framework-pmp/2012.03.44-SNAPSHOT/framework-pmp-2012.03.44-20131121.062437-11-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

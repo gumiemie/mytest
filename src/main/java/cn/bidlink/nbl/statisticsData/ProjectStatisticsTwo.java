@@ -27,10 +27,10 @@ import java.util.*;
 @SuppressWarnings("all")
 public class ProjectStatisticsTwo {
     //设置参数,时间范围
-    private final String beginDate = "2019-02-01";
-    private final String endDate = "2019-02-28";
+    private final String beginDate = "2019-07-01";
+    private final String endDate = "2019-07-31";
 
-    private final String filePath = "E:\\文档\\数据统计\\";
+    private final String filePath = "/Users/guyang/Documents/文档/数据统计/";
     private final String[] titles = new String[]{"机构名称", "流程类型", "项目数量", "投标商数量", "中标商数量", "中标金额(万元)"};
 
     //要统计的租户code
@@ -51,33 +51,55 @@ public class ProjectStatisticsTwo {
         export(this.tenders, beginDate, endDate, fileName);
     }
 
-    public void countBidderByProjectType() throws Exception {
+    /**
+     * 导出中标金额疑似异常的数据
+     */
+    @Test
+    public void executeBidPriceException() {
+        Sql sql = Sqls.create("SELECT p.TENANT_ID,p.number,p.name,b.BIDDER_NAME,b.BIDDER_LOGIN_NAME,b.OPEN_PRICE FROM bid b\n" +
+                "LEFT JOIN packages p ON p.id = b.PACKAGE_ID\n" +
+                "WHERE b.SYSTEM_STATUS = 1\n" +
+                "AND b.bid_result =1\n" +
+                "AND b.CREATE_TIME > @beginDate \n" +
+                "AND b.CREATE_TIME <= @endDate \n" +
+                "AND b.OPEN_price > 10000\n" +
+                "and p.is_test = 0");
+        sql.setParam("beginDate", beginDate);
+        sql.setParam("endDate", endDate + " 23:59:59");
+
+        sql.setCallback(Sqls.callback.records());
+
+        Sql execute = biddingDao.execute(sql);
+        List<Record> list = sql.getList(Record.class);
         XSSFWorkbook workbook = new XSSFWorkbook();
-
-        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        Date beginDate = format.parse(this.beginDate + " 00:00:00");
-        Date endDate = format.parse(this.endDate + " 23:59:59");
-        StringBuilder sb1 = new StringBuilder("select DISTINCT BIDDER_NAME from bid where SYSTEM_STATUS = 1 And package_id in(select id from packages where tenant_id = @tenantId" +
-                "and TENDER_PROCUREMENT_MODE = @mode)");
-        buildParamStr(sb1, null, beginDate, endDate);
-        Sql sql1 = Sqls.create(sb1.toString());
-
-        StringBuilder sb2 = new StringBuilder("select Sum(open_price) from bid where SYSTEM_STATUS = 1 And package_id in(select id from packages where tenant_id = @tenantId" +
-                "and TENDER_PROCUREMENT_MODE = @mode)");
-        buildParamStr(sb2, null, beginDate, endDate);
-        Sql sql2 = Sqls.create(sb2.toString());
-        String[] columns = new String[]{"国内招标(含资格预审)", "竞争性谈判", "询价", "单一来源", "竞争性磋商", "资格预审"};
-        List<Map<String, String>> tenderNameAndTenantIds = getTenderNameAndTenantIds(tenders);
-        for (Map map : tenderNameAndTenantIds) {
-            Set<String> set = map.keySet();
-            for (String key : set) {
-                workbook.createSheet((String) map.get(key));
-                setParams(sql1, key, beginDate, endDate);
-                setParams(sql2, key, beginDate, endDate);
-                for (int index = 0; index < columns.length; index++) {
-
+        XSSFSheet sheet = workbook.createSheet();
+        String[] title = new String[]{"机构名称", "项目编号", "项目名称", "投标商名称", "投标商登录名", "中标金额（万元）"};
+        String[] columnNames = new String[]{"tenant_id", "number", "name", "bidder_name", "bidder_login_name", "open_price"};
+        createTitleRow(sheet, title);
+        HashMap<String, String> map = new HashMap<>();
+        map.put("50034ae6e76111e59ef090b11c392655", "云南云创");
+        map.put("501ceb5ee76111e59ef090b11c392655", "北京国际");
+        map.put("6423c48ca493455fa22fefef15cea818", "湖南国联");
+        map.put("12f15e6a225f4d1685aebe941a3773e3", "建壮咨询");
+        int lastRowNum = sheet.getLastRowNum();
+        for (Record record : list) {
+            XSSFRow row = sheet.createRow(lastRowNum + 1);
+            for (int cellIndex = 0; cellIndex < record.getColumnCount(); cellIndex++) {
+                XSSFCell cell = row.createCell(cellIndex);
+                if (cellIndex == 0) {
+                    cell.setCellValue(map.get(record.get(columnNames[cellIndex])));
+                }else {
+                    cell.setCellValue(record.getString(columnNames[cellIndex]));
                 }
             }
+            lastRowNum++;
+        }
+        try {
+            FileOutputStream outputStream = new FileOutputStream(new File(filePath + "月中标金额疑似异常.xlsx"));
+            workbook.write(outputStream);
+            outputStream.close();
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
 
@@ -104,7 +126,7 @@ public class ProjectStatisticsTwo {
             Set<String> set = map.keySet();
             for (String key : set) {
                 List<List<String>> lists = queryProject(key, (String) map.get(key), beginDate, endDate);
-                for (List<String> list:lists){
+                for (List<String> list : lists) {
                     XSSFRow row = sheet.createRow(sheet.getLastRowNum() + 1);
                     for (int i = 0; i < list.size(); i++) {
                         row.createCell(i).setCellValue(list.get(i));
@@ -159,7 +181,7 @@ public class ProjectStatisticsTwo {
         for (int i = 1; i <= 5; i++) {
             ArrayList<String> strings = new ArrayList<String>();
             strings.add(tenderName);
-            strings.add(columns[i-1]);
+            strings.add(columns[i - 1]);
             if (i == 1) {
                 strings.add(countProject(i, tenantId, beginDate, endDate) + "(" + countPrequalify(tenantId, beginDate, endDate) + ")");
             } else {

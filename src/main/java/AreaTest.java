@@ -1,19 +1,26 @@
 import com.alibaba.fastjson.JSONObject;
+import org.apache.solr.client.solrj.SolrQuery;
+import org.apache.solr.client.solrj.impl.CloudSolrClient;
+import org.apache.solr.client.solrj.impl.XMLResponseParser;
+import org.apache.solr.client.solrj.response.QueryResponse;
+import org.apache.solr.common.SolrDocument;
+import org.apache.solr.common.SolrDocumentList;
 import org.junit.Test;
 import org.nutz.dao.Cnd;
 import org.nutz.dao.impl.NutDao;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import pubService.project.SuperviseSendLog;
+import cn.bidlink.nbl.pubService.project.SuperviseSendLog;
 import utils.DBUtils;
 
 import java.math.BigDecimal;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.UUID;
+import java.time.*;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.DoubleStream;
+import java.util.stream.Stream;
 
 /**
  * @author 顾洋 <guyang@ebnew.com>
@@ -85,7 +92,7 @@ public class AreaTest {
             projectNumber = projectNumber.length() > 17 ? projectNumber.substring(projectNumber.length() - 17) : stringBuilder.substring(0, 17);
             tenderNumber = stringBuilder.substring(0, 20);
             packageNumber = stringBuilder.substring(20);
-        }else {
+        } else {
             projectNumber = number;
             packageNumber = "000";
             //项目编号长度
@@ -120,10 +127,10 @@ public class AreaTest {
 
 
     public void execute2() throws Exception {
-        /*String solrServceUrl1 = "http://211.151.208.171:8800/solr/searchbu/";
+        String solrServceUrl1 = "http://211.151.208.171:8800/solr/searchbu/";
         String solrServceUrl2 = "http://211.151.208.173:8800/solr/searchbu/";
 
-        LBHttpSolrClient solrClient = new LBHttpSolrClient.Builder().withBaseSolrUrls(solrServceUrl1, solrServceUrl2).build();
+        CloudSolrClient solrClient = new CloudSolrClient(solrServceUrl1);
         solrClient.setParser(new XMLResponseParser());
         SolrQuery solrQuery = new SolrQuery();
         solrQuery.setHighlight(true);
@@ -142,7 +149,7 @@ public class AreaTest {
         SolrDocumentList results = response.getResults();
         SolrDocument solrDocument = results.get(0);
         HashMap<String, Object> stringObjectHashMap = new HashMap<String, Object>();
-        Map<String, Map<String, List<String>>> highlighting = response.getHighlighting();*/
+        Map<String, Map<String, List<String>>> highlighting = response.getHighlighting();
     }
 
     /*private List<ItemSolr> queryItemSolrByKeyword(String keywords, Integer page, Integer rows)
@@ -196,10 +203,51 @@ public class AreaTest {
         return list;*/
 
     @Test
-    public void execute3() throws Exception{
-        String weight;
-        System.out.print(UUID.randomUUID().toString().replaceAll("-",""));
+    public void execute3() throws Exception {
+        Random random = new Random();
+        random.ints(0, 100).limit(10).forEach(System.out::println);
+        random.nextGaussian();
+        DoubleStream doubleStream = Stream.generate(random::nextGaussian).mapToDouble(e -> e);
+        doubleStream.limit(1);
     }
+
+    @Test
+    public void execute4() {
+        Arrays.stream(new int[]{1, 2, 3, 4, 5, 6, 7}).parallel().max().ifPresent(System.out::println);
+        Instant instant = new Date().toInstant();
+        Clock clock = Clock.systemDefaultZone();
+        LocalDateTime now = LocalDateTime.now(clock);
+        DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
+        String format = now.format(dateTimeFormatter);
+        System.out.println(format);
+        LocalDateTime d1 = LocalDateTime.of(2013, 12, 31, 23, 59, 1);
+        System.out.println(now);
+        System.out.println(d1);
+        LocalDate now1 = LocalDate.now();
+        LocalTime now2 = LocalTime.now();
+        Instant now3 = Instant.now();
+        long epochSecond = now3.getEpochSecond();
+        long epochSecond2 = now3.toEpochMilli();
+        long l = System.currentTimeMillis();
+        System.out.println(now3);
+        System.out.println(l);
+        System.out.println(epochSecond);
+        System.out.println(epochSecond2);
+    }
+
+
+    @Test
+    public void execute5() {
+        char a = 'a';
+        char b = 'b';
+
+        a =  (char) (a ^ b);
+        b =  (char) (a ^ b);
+        a =  (char) (a ^ b);
+        System.out.println(a);
+        System.out.println(b);
+    }
+
 
 }
 

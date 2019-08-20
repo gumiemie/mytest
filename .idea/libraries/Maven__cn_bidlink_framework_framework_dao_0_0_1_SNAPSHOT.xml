@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: cn.bidlink.framework:framework-dao:0.0.1-SNAPSHOT">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/java/maven2/repository/cn/bidlink/framework/framework-dao/0.0.1-SNAPSHOT/framework-dao-0.0.1-20141121.053506-2.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/java/maven2/repository/cn/bidlink/framework/framework-dao/0.0.1-SNAPSHOT/framework-dao-0.0.1-20141121.053506-2-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/java/maven2/repository/cn/bidlink/framework/framework-dao/0.0.1-SNAPSHOT/framework-dao-0.0.1-20141121.053506-2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

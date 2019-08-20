@@ -26,15 +26,15 @@ import java.util.*;
  */
 public class ProjectStatistics {
     //设置参数,时间范围
-    private final String beginDate = "2019-02-01";
-    private final String endDate = "2019-02-28";
+    private final String beginDate = "2019-07-01";
+    private final String endDate = "2019-07-31";
 
-    private final String filePath = "E:\\文档\\数据统计\\";
+    private final String filePath = "/Users/guyang/Documents/文档/数据统计/";
     private final String[] titles = new String[]{"机构名称", "招标", "资格预审", "竞争性谈判", "询价", "单一来源", "竞争性磋商", "投标商数量", "中标商数量", "成交金额(万元)"};
 
     //要统计的租户code
     //北京国际 0610 ; 湖南国联 0646 ; 云南云创 0848 北京建壮安徽分公司 2935,北京建智达工程管理股份有限公司 1440,海南海机采招标服务有限公司 1668 ,广东海虹药通电子商务有限公司 2220;
-    private final String[] tenders = new String[]{"0646", "0610", "0848","2935","1440","1668","2220"};
+    private final String[] tenders = new String[]{"0646", "0610", "0848","2935"};
     private DBUtils dbUtils = new DBUtils();
     private final NutDao biddingDao = dbUtils.getBiddingDao();
     private final NutDao nblUserDao = dbUtils.getNblUserDao();
